@@ -1,0 +1,86 @@
+<div style="text-align {{ section.settings.text-alignment }}">
+  {% for block in section.blocks %}
+  {%- case block.type -%}
+    {%- when 'title' -%}
+      <h2 style="background-color: {{ block.settings.bg-color }}; color: {{ block.settings.font-color }};">Title</h2>
+    {%- when 'subtitle' -%}
+      <p style="background-color: {{ block.settings.bg-color }}; color: {{ block.settings.font-color }};">Subtitle</p>
+    {%- endcase -%}
+{% endfor %}
+</div>
+  
+
+
+{%  schema  %} 
+{
+  "name": "Hello World",
+  "settings": [
+    {
+      "type": "select",
+      "id": "text-alignment",
+      "label": "Text Alignment",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+        
+      ],
+    },
+  ],
+  "blocks": [
+    {
+      "type": "title",
+      "name": "Title",
+      "settings": [
+        
+          {
+    "type": "color",
+    "id": "bg-color",
+    "label": "Background-Color",
+    "default": "#e9e9e9"
+  },
+  {
+    "type": "color",
+    "id": "font-color",
+    "label": "font-color",
+    "default": "#ffffff"   
+        }
+      ]
+    },
+    {
+      "name": "Subtitle",
+      "type": "subtitle",
+      "settings": [
+              {
+    "type": "color",
+    "id": "bg-color",
+    "label": "Background-Color",
+    "default": "#e9e9e9"
+  },
+  {
+    "type": "color",
+    "id": "font-color",
+    "label": "font-color",
+    "default": "#ffffff"
+          
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hello World"
+    }
+  ]
+}
+ {% endschema %}

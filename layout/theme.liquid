@@ -363,6 +363,16 @@ body {
 
     {% sections 'header-group' %}
     <h1>Hello From vs Code</h1>
+<pre>
+  
+    
+    
+</pre>
+    {%- if request.design_mode -%}
+      This is Design Mode
+    {%- else -%}
+      This is not design mode
+    {%- endif -%}
     <main
       id="MainContent"
       class="content-for-layout focus-none"
@@ -371,12 +381,12 @@ body {
       {{ content_for_layout }}
     </main>
 
-    {% sections 'footer-group' %}
 
     <ul hidden>
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
+
 
     <script>
       window.shopUrl = '{{ request.origin }}';
@@ -423,12 +433,23 @@ body {
       };
     </script>
 
-    {%- if settings.predictive_search_enabled -%}
-      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
 
-    {%- if settings.cart_type == 'drawer' -%}
-      <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
+    <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+
+
+    <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+
   </body>
 </html>
+
+
+{% sections 'footer-group' %}
+
+
+{%- if settings.predictive_search_enabled -%}
+
+{%- endif -%}
+
+{%- if settings.cart_type == 'drawer' -%}
+
+{%- endif -%}
